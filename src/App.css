@@ -1,0 +1,682 @@
+/* ── Reset & base ────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  color: #222;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── App shell ───────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── Navbar ──────────────────────────────────────── */
+.navbar {
+  display: flex;
+  align-items: center;
+  background: #1a56db;
+  color: #fff;
+  padding: 0 24px;
+  height: 56px;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.brand {
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: auto;
+  letter-spacing: -0.3px;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 4px;
+}
+
+.navbar nav button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 6px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navbar nav button:hover,
+.navbar nav button.active {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.15s;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.user-info strong {
+  font-weight: 600;
+}
+
+.user-role {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.btn-logout:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Main content ────────────────────────────────── */
+main {
+  padding: 28px 24px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Section ─────────────────────────────────────── */
+.section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a56db;
+  margin-bottom: 20px;
+}
+
+/* ── Two-column layout ───────────────────────────── */
+.layout-cols {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .layout-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Card ────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f2f5;
+}
+
+/* ── Form fields ─────────────────────────────────── */
+.field {
+  margin-bottom: 13px;
+}
+
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #666;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.hint {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #999;
+  font-size: 11px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #222;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #1a56db;
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field.check label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 13px;
+  color: #444;
+  cursor: pointer;
+}
+
+.field.check input {
+  width: auto;
+}
+
+/* ── Buttons ─────────────────────────────────────── */
+.btn-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.btn-primary {
+  background: #1a56db;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #1447b4;
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-primary.btn-full {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.btn-secondary {
+  background: #f0f2f5;
+  color: #555;
+  border: 1px solid #d1d5db;
+  padding: 8px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.btn-secondary:hover {
+  background: #e2e5ea;
+}
+
+/* ── Table ───────────────────────────────────────── */
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead th {
+  text-align: left;
+  padding: 9px 10px;
+  background: #f8f9fb;
+  color: #666;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+  border-bottom: 2px solid #eee;
+}
+
+tbody td {
+  padding: 9px 10px;
+  border-bottom: 1px solid #f0f2f5;
+  vertical-align: middle;
+  color: #333;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: #fafbff;
+}
+
+.empty {
+  text-align: center;
+  color: #aaa;
+  padding: 24px !important;
+  font-style: italic;
+}
+
+.comentario-cell {
+  max-width: 280px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Table action buttons */
+tbody td button {
+  padding: 4px 10px;
+  font-size: 12px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #e8f0fe;
+  color: #1a56db;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+tbody td button:hover {
+  background: #c7d7fc;
+}
+
+tbody td button.danger {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+tbody td button.danger:hover {
+  background: #fecaca;
+}
+
+/* ── Badges ──────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.estado-abierto    { background: #dcfce7; color: #166534; }
+.estado-enproceso  { background: #fef9c3; color: #854d0e; }
+.estado-resuelto   { background: #dbeafe; color: #1d4ed8; }
+.estado-cerrado    { background: #f1f5f9; color: #475569; }
+
+.prio-critica { background: #fecaca; color: #991b1b; }
+.prio-alta    { background: #fee2e2; color: #dc2626; }
+.prio-media   { background: #fef9c3; color: #854d0e; }
+.prio-baja    { background: #dcfce7; color: #166534; }
+
+.rol { background: #ede9fe; color: #5b21b6; }
+
+/* ── Feedback messages ───────────────────────────── */
+.error {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 8px;
+  background: #fee2e2;
+  padding: 7px 10px;
+  border-radius: 4px;
+}
+
+.success {
+  color: #15803d;
+  font-size: 13px;
+  margin-top: 8px;
+  background: #dcfce7;
+  padding: 7px 10px;
+  border-radius: 4px;
+}
+
+/* ── Reporte section ─────────────────────────────── */
+.reporte-card {
+  margin-top: 20px;
+}
+
+.reporte-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.reporte-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .reporte-body { grid-template-columns: 1fr; }
+}
+
+.reporte-fields {
+  background: #f8f9fb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.reporte-seguimientos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reporte-seguimientos h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.seguimiento-item {
+  background: #f8f9fb;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #1a56db;
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.seguimiento-item p {
+  font-size: 13px;
+  color: #374151;
+  margin-top: 4px;
+}
+
+.seguimiento-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.empty-msg {
+  color: #aaa;
+  font-size: 13px;
+  font-style: italic;
+}
+
+pre {
+  background: #f8f9fb;
+  border: 1px solid #e5e7eb;
+  padding: 14px;
+  border-radius: 5px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 1.6;
+  max-height: 320px;
+  color: #374151;
+}
+
+/* ── Login page ──────────────────────────────────── */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a56db 0%, #0f3799 100%);
+}
+
+.login-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 14px;
+  width: 380px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+}
+
+.login-card h2 {
+  text-align: center;
+  color: #1a56db;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.login-card--wide {
+  width: 480px;
+}
+
+.login-subtitle {
+  text-align: center;
+  color: #888;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+
+/* Two-column grid inside auth cards */
+.registro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 14px;
+}
+
+/* Switch link below auth forms */
+.auth-switch {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 13px;
+  color: #888;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #1a56db;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link-btn:hover {
+  color: #1447b4;
+}
+
+/* Registration success screen */
+.registro-success {
+  text-align: center;
+}
+
+.registro-success-icon {
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+.registro-success h2 {
+  color: #15803d;
+}
+
+/* ── Nuevo Ticket page ───────────────────────────── */
+.nuevo-ticket-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.nuevo-ticket-card {
+  width: 100%;
+  max-width: 720px;
+}
+
+.nuevo-ticket-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+.nuevo-ticket-full {
+  grid-column: 1 / -1;
+}
+
+.nuevo-ticket-actions {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 2px solid #f0f2f5;
+}
+
+.req {
+  color: #dc2626;
+  margin-left: 2px;
+}
+
+/* Priority radio buttons */
+.prio-options {
+  display: flex;
+  gap: 8px;
+}
+
+.prio-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 5px;
+  border: 2px solid #e5e7eb;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+
+.prio-option input[type="radio"] {
+  display: none;
+}
+
+.prio-option.selected.prio-opt-critica { border-color: #991b1b; background: #fecaca; color: #991b1b; }
+.prio-option.selected.prio-opt-alta  { border-color: #dc2626; background: #fee2e2; color: #dc2626; }
+.prio-option.selected.prio-opt-media { border-color: #ca8a04; background: #fef9c3; color: #854d0e; }
+.prio-option.selected.prio-opt-baja  { border-color: #16a34a; background: #dcfce7; color: #166534; }
+.prio-option:not(.selected):hover    { border-color: #9ca3af; background: #f9fafb; }
+
+/* Ticket created success screen */
+.ticket-creado-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.ticket-creado-card {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.ticket-creado-icon {
+  font-size: 52px;
+  margin-bottom: 12px;
+}
+
+.ticket-creado-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #15803d;
+  border: none;
+  margin-bottom: 4px;
+}
+
+.ticket-creado-id {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.ticket-creado-detalle {
+  background: #f8f9fb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.detalle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f2f5;
+  font-size: 13px;
+}
+
+.detalle-row:last-child {
+  border-bottom: none;
+}
+
+.detalle-label {
+  font-weight: 700;
+  color: #666;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 90px;
+}
+
+.ticket-creado-btns {
+  justify-content: center;
+}
+
